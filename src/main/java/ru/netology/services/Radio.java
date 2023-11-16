@@ -52,10 +52,11 @@ public class Radio {
             currentVolume = currentVolume + 1;
         }
     }
-    public void turnDownTheVolume(){
-        if (currentVolume > 0){
+
+    public void turnDownTheVolume() {
+        if (currentVolume > 0) {
             currentVolume--;
-        }else {
+        } else {
             currentVolume = 0;
         }
     }

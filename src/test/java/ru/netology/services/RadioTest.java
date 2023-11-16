@@ -113,21 +113,23 @@ class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldSetPrevVolume(){
+    public void shouldSetPrevVolume() {
         radio.setVolume(45);
         radio.turnDownTheVolume();
         int expected = 44;
         int actual = radio.getVolume();
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldSetPrevVolumeZero(){
+    public void shouldSetPrevVolumeZero() {
         radio.setVolume(0);
         radio.turnDownTheVolume();
         int expected = 0;
         int actual = radio.getVolume();
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
 }

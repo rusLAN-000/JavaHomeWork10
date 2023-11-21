@@ -4,21 +4,31 @@ import lombok.Getter;
 
 public class Radio {
     @Getter
+    private int maxStation;
+    @Getter
     private int currentStation;
     private int currentVolume;
 
+    public Radio(int amountStation) {
+        this.maxStation = amountStation - 1;
+    }
+
+    public Radio() {
+        this.maxStation = 10;
+    }
+
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            newCurrentStation = 9;
+        if (newCurrentStation > maxStation) {
+            newCurrentStation = 0;
         }
-        if (newCurrentStation > 9) {
-            return;
+        if (newCurrentStation <= 0) {
+            newCurrentStation = maxStation;
         }
         currentStation = newCurrentStation;
     }
 
     public void nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -26,12 +36,13 @@ public class Radio {
     }
 
     public void prevStation() {
-        if (currentStation > 0) {
+        if (currentStation < maxStation) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation - 1;
         }
     }
+
 
     public int getVolume() {
         return currentVolume;
@@ -55,7 +66,7 @@ public class Radio {
 
     public void turnDownTheVolume() {
         if (currentVolume > 0) {
-            currentVolume--;
+            currentVolume--; // или сurrentVolume = currentVolume - 1; но тогда без else
         } else {
             currentVolume = 0;
         }
